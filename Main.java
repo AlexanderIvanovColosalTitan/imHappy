@@ -35,7 +35,6 @@ public class Main {
                 database.addGroup(group);
 
                 try {
-                    // Выполнение SQL-запроса для добавления группы в базу данных
                     String sql = "INSERT INTO groups (name, number) VALUES (?, ?)";
                     PreparedStatement statement = connection.prepareStatement(sql);
                     statement.setString(1, groupName);
@@ -53,7 +52,6 @@ public class Main {
                 database.removeGroup(groupName);
 
                 try {
-                    // Выполнение SQL-запроса для удаления группы из базы данных
                     String sql = "DELETE FROM groups WHERE name = ?";
                     PreparedStatement statement = connection.prepareStatement(sql);
                     statement.setString(1, groupName);
@@ -79,7 +77,6 @@ public class Main {
                 database.addChildToGroup(groupName, child);
 
                 try {
-                    // Выполнение SQL-запроса для добавления ребенка в группу в базе данных
                     String sql = "INSERT INTO children (group_name, name, gender, age) VALUES (?, ?, ?, ?)";
                     PreparedStatement statement = connection.prepareStatement(sql);
                     statement.setString(1, groupName);
@@ -102,7 +99,6 @@ public class Main {
                 database.removeChildFromGroup(groupName, child);
 
                 try {
-                    // Выполнение SQL-запроса для удаления ребенка из группы в базе данных
                     String sql = "DELETE FROM children WHERE group_name = ? AND name = ?";
                     PreparedStatement statement = connection.prepareStatement(sql);
                     statement.setString(1, groupName);
@@ -122,7 +118,6 @@ public class Main {
                 database.editGroupName(groupName, newGroupName);
 
                 try {
-                    // Выполнение SQL-запроса для изменения названия группы в базе данных
                     String sql = "UPDATE groups SET name = ? WHERE name = ?";
                     PreparedStatement statement = connection.prepareStatement(sql);
                     statement.setString(1, newGroupName);
@@ -150,7 +145,6 @@ public class Main {
                 database.editChild(groupName, childName, newChildName, newChildGender, newChildAge);
 
                 try {
-                    // Выполнение SQL-запроса для изменения информации о ребенке в базе данных
                     String sql = "UPDATE children SET name = ?, gender = ?, age = ? WHERE group_name = ? AND name = ?";
                     PreparedStatement statement = connection.prepareStatement(sql);
                     statement.setString(1, newChildName);
@@ -171,7 +165,6 @@ public class Main {
                 database.getGroupInfo(groupName);
 
                 try {
-                    // Выполнение SQL-запроса для получения информации о группе из базы данных
                     String sql = "SELECT * FROM groups WHERE name = ?";
                     PreparedStatement statement = connection.prepareStatement(sql);
                     statement.setString(1, groupName);
